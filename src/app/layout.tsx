@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Roboto_Condensed, Oswald, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
+import TopHeader from "@/components/layout/header/TopHeader";
+import Footer from "@/components/layout/footer/Footer";
+import SubTopHeader from "@/components/layout/header/SubTopHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,6 +13,24 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const robotoCondensed = Roboto_Condensed({
+  variable: "--font-roboto-condensed",
+  subsets: ["latin"],
+});
+
+// Nike-style fonts (Helvetica Neue alternatives)
+const oswald = Oswald({
+  variable: "--font-oswald",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const barlowCondensed = Barlow_Condensed({
+  variable: "--font-barlow-condensed",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -25,9 +46,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${robotoCondensed.variable} ${oswald.variable} ${barlowCondensed.variable} antialiased`}
       >
+        <TopHeader />
+        <SubTopHeader />
         {children}
+        <Footer />
       </body>
     </html>
   );
